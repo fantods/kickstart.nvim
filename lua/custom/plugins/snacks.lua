@@ -26,7 +26,6 @@ return {
     },
   },
   keys = {
-    -- Top Pickers & Explorer
     {
       '<leader><space>',
       function()
