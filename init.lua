@@ -22,6 +22,30 @@ vim.keymap.set('n', '<C-S-l>', '<C-w>L', { desc = 'Move window to the right' })
 vim.keymap.set('n', '<C-S-j>', '<C-w>J', { desc = 'Move window to the lower' })
 vim.keymap.set('n', '<C-S-k>', '<C-w>K', { desc = 'Move window to the upper' })
 
+vim.keymap.set('n', '<leader>cl', function()
+  require('nvim-python-repl').send_statement_definition()
+end, { desc = 'Send semantic unit to REPL' })
+
+vim.keymap.set('v', '<leader>cv', function()
+  require('nvim-python-repl').send_visual_to_repl()
+end, { desc = 'Send visual selection to REPL' })
+
+vim.keymap.set('n', '<leader>cx', function()
+  require('nvim-python-repl').send_buffer_to_repl()
+end, { desc = 'Send entire buffer to REPL' })
+
+vim.keymap.set('n', '<leader>cz', function()
+  require('nvim-python-repl').toggle_execute()
+end, { desc = 'Automatically execute command in REPL after sent' })
+
+vim.keymap.set('n', '<leader>cc', function()
+  require('nvim-python-repl').toggle_vertical()
+end, { desc = 'Create REPL in vertical or horizontal split' })
+
+vim.keymap.set('n', '<leader>cp', function()
+  require('nvim-python-repl').open_repl()
+end, { desc = 'Opens the REPL in a window split' })
+
 -- Highlight when yanking (copying) text
 --  See `:help vim.highlight.on_yank()`
 vim.api.nvim_create_autocmd('TextYankPost', {
@@ -50,13 +74,13 @@ require('lazy').setup({
   require 'kickstart.plugins.gitsigns',
   require 'plugins.snacks',
   require 'plugins.mini',
-  require 'plugins.avante',
   require 'plugins.telescope',
   require 'plugins.lsp',
   require 'plugins.completion',
   require 'plugins.treesitter',
   require 'plugins.colorscheme',
   require 'plugins.utils',
+  require 'plugins.nvim-python-repl',
 }, {
   ui = {
     icons = vim.g.have_nerd_font and {} or {

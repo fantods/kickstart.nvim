@@ -10,7 +10,7 @@ return {
     { 'j-hui/fidget.nvim', opts = {} },
     -- Allows extra capabilities provided by nvim-cmp
     'hrsh7th/cmp-nvim-lsp',
-    
+
     -- Optional: Lua development for Neovim config
     {
       'folke/lazydev.nvim',
@@ -168,4 +168,5 @@ return {
       },
     }
   end,
-} 
+}
+
